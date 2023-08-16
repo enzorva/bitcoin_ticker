@@ -1,10 +1,11 @@
 import 'package:bitcoin_ticker/services/networking.dart';
 
-//const apiKey = 'FB8931D1-399A-4824-BCCC-58AAD0E6DF09';
-const coinDataURL = 'https://rest.coinapi.io/v1/exchangerate/BTC/USD';
+var cryptoName = 'BTC';
 
 class PriceModel {
-  Future<dynamic> getBtcPrice(String currency) async {
+  Future<dynamic> getCryptoPrice(String currency, String cryptoName) async {
+    final coinDataURL =
+        'https://rest.coinapi.io/v1/exchangerate/$cryptoName/$currency';
     NetworkHelper networkHelper = NetworkHelper(coinDataURL);
 
     var priceData = await networkHelper.getData();
